@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boolean and if statement exercise</title>
+</head>
+<body>
+
+
+  <script>
+    let now = new Date();
+    const name='Shakib';
+
+    let hour = now.getHours();
+    if(hour>=6 && hour<=12){
+      console.log(`Good Morning! ${name}`);
+    }
+    else if (hour>=13 && hour<=17){
+      console.log(`Good afternoon!${name}`);
+    }
+    else{
+      console.log(`Good Night!${name}`);
+    }
+  </script>
+  
+</body>
+</html>

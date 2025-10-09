@@ -36,18 +36,31 @@
   <!-- JavaScript begins from here -->
 
   <script>
+     let score={
+        wins:0, loses:0, ties:0
+      }
+    console.log(localStorage.getItem('score'));
 
-    const score ={
-      wins:0, 
-      loses:0,
-      ties:0
-    };
+    score = JSON.parse(localStorage.getItem('score'));
+
+   
+
+
+
 
     function resetScore(){
       score.wins=0,
       score.loses=0,
       score.ties=0
+      localStorage.removeItem('score');
+          
     }
+    if(score ===null){
+      score={
+        wins:0, loses:0, ties:0
+      }
+    }
+    
 
     function playGame(playerMove) {
       const computerMove = pickcomputerMove();
@@ -66,7 +79,7 @@
 
       }
     
-      if (playerMove === 'paper') {
+      else if (playerMove === 'paper') {
 
         if (computerMove ==='rock') {
           result = 'You win';
@@ -91,7 +104,8 @@
         }
       }
 
-      else if(result==='You win'){
+      
+      if(result==='You win'){
         score.wins+=1;
       }
       else if(result==='You lose'){
@@ -101,9 +115,16 @@
         score.ties+=1;
       }
       console.log(score);
+      
+
+     
 
       alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}
 Wins:${score.wins}, Loses:${score.loses}, Ties:${score.ties}`);
+
+    localStorage.setItem('score',JSON.stringify(score));
+    console.log(localStorage.getItem('score'));
+
 
     }
 
@@ -124,6 +145,8 @@ Wins:${score.wins}, Loses:${score.loses}, Ties:${score.ties}`);
       return computerMove;
 
     }
+
+  
 
   </script>
 
